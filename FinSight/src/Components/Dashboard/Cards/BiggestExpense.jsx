@@ -1,6 +1,6 @@
 export default function BiggestExpense({ expense }) {
     return (
-        <div className="flex flex-col h-full w-0.5 justify-start items-start">
+        <div className="flex flex-col h-full w-45 justify-start items-start">
             <p className="font-semibold text-xl">{expense?.name}</p>
             <div className="flex justify-between items-end w-full text-xl font-semibold">
                 <p className="text-gray-400 text-[16px]">Id: {expense?.id}</p>
