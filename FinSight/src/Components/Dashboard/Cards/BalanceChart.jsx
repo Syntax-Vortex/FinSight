@@ -1,7 +1,4 @@
-
-import Data from '../../../Data/transactions.json';
-import getBalanceData from '../../../Utils/getBalanceData';
-
+import useDataStore from '../../../Stores/useDataStore'
 import {
     LineChart,
     Line,
@@ -13,9 +10,7 @@ import {
 } from "recharts";
 
 export default function BalanceChart() {
-    const transactions = Data.transactions;
-
-    const data = getBalanceData(transactions);
+    const { balanceData: data } = useDataStore();
 
     if (!data.length) {
         return (
@@ -26,7 +21,7 @@ export default function BalanceChart() {
     }
 
     return (
-        <div className="w-[60%] h-66 bg-white border-2 border-gray-200 rounded-xl p-2 flex flex-col justify-start items-center">
+        <div className="w-full h-66 bg-white border-2 border-gray-200 rounded-xl p-2 flex flex-col justify-start items-center hover:scale-[1.01] duration-150">
             <p className='font-semibold text-xl'>Balance trend</p>
             <div className='w-[99%] h-full'>
                 <ResponsiveContainer width="100%" height="100%">
