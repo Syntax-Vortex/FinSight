@@ -1,7 +1,7 @@
 export default function Sidebar({ setActivePanel, activePanel }) {
 
     return (
-        <div className="h-full w-1/7 bg-white flex flex-col py-4 px-2 gap-6 rounded-xl">
+        <div className="h-full w-1/7 bg-white flex flex-col py-4 px-2 gap-6">
             <div className="flex flex-col gap-2">
                 <button className={` flex justify-start items-center gap-4 p-2 rounded-lg duration-150 cursor-pointer
                         ${(activePanel==0)? ' text-white bg-violet-400' : ' hover:bg-gray-200 hover:text-black hover:border-gray-200'}`} 
