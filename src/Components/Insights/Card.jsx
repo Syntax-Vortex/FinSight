@@ -2,7 +2,7 @@ export default function Card(props) {
     const { title, value, Valuetype, percent, percentType } = props;
 
     return (
-        <div className="flex-1 h-46.25 md:h-55 lg:h-45 border-2 max-w-62.5 border-gray-300 rounded-xl bg-white py-4 px-6 flex flex-col gap-4 justify-start items-start
+        <div className="min-w-[170px] flex-1 h-46.25 md:h-55 lg:h-45 border-2 max-w-62.5 border-gray-300 rounded-xl bg-white py-4 px-6 flex flex-col gap-4 justify-start items-start
                         hover:scale-[1.01] hover:shadow-lg duration-150">
             <p className="lg:font-semibold text-md lg:text-lg text-gray-400">{title}</p>
 
