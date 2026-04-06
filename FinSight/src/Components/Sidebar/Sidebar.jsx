@@ -1,6 +1,5 @@
-export default function Sidebar({ setActivePanel, activePanel }) {
-    const baseBtn =
-        "flex items-center rounded-lg duration-150 cursor-pointer";
+export default function Sidebar({ setActivePanel, activePanel, setIsAdmin, isAdmin }) {
+    const baseBtn = "flex items-center rounded-lg duration-150 cursor-pointer";
     const activeBtn = "text-white bg-violet-400";
     const inactiveBtn = "hover:bg-gray-200 hover:text-black";
 
@@ -9,7 +8,7 @@ export default function Sidebar({ setActivePanel, activePanel }) {
             className="
                 fixed bottom-0 left-0 w-full h-16 bg-white border-t border-gray-200 shadow-[0_-2px_10px_rgba(0,0,0,0.06)] z-50
                 flex justify-around items-center px-2
-                md:static md:h-full md:w-1/7 md:border-t-0 md:shadow-none md:flex-col md:justify-start md:items-stretch md:py-4 md:px-2 md:gap-6
+                md:static md:h-full md:w-56 md:border-t-0 md:shadow-none md:flex-col md:justify-between md:items-stretch md:py-4 md:px-2
             "
         >
             <div className="w-full flex justify-around items-center md:flex-col md:justify-start md:items-stretch md:gap-2">
@@ -23,7 +22,7 @@ export default function Sidebar({ setActivePanel, activePanel }) {
                     onClick={() => setActivePanel(0)}
                 >
                     <svg
-                        className="size-5 md:size-6"
+                        className="size-5 md:size-6 shrink-0"
                         xmlns="http://www.w3.org/2000/svg"
                         viewBox="0 0 24 24"
                         fill="none"
@@ -50,7 +49,7 @@ export default function Sidebar({ setActivePanel, activePanel }) {
                     onClick={() => setActivePanel(1)}
                 >
                     <svg
-                        className="size-5 md:size-6"
+                        className="size-5 md:size-6 shrink-0"
                         xmlns="http://www.w3.org/2000/svg"
                         viewBox="0 0 24 24"
                         fill="none"
@@ -76,7 +75,7 @@ export default function Sidebar({ setActivePanel, activePanel }) {
                     onClick={() => setActivePanel(2)}
                 >
                     <svg
-                        className="size-5 md:size-6"
+                        className="size-5 md:size-6 shrink-0"
                         xmlns="http://www.w3.org/2000/svg"
                         viewBox="0 0 24 24"
                         fill="none"
@@ -91,6 +90,29 @@ export default function Sidebar({ setActivePanel, activePanel }) {
                     </svg>
                     <span className="truncate">Insights</span>
                 </button>
+            </div>
+
+            <div className="hidden md:flex flex-col gap-2 px-2 pt-4 border-t border-gray-200">
+                <p className="text-gray-600 text-sm font-medium">Role</p>
+
+                <div className="relative">
+                    <select
+                        value={isAdmin ? "admin" : "viewer"}
+                        onChange={(e) => setIsAdmin(e.target.value === "admin")}
+                        className="
+                            w-full appearance-none bg-white border-2 border-gray-200 rounded-lg
+                            px-3 pr-8 py-2 text-sm text-gray-800 outline-none transition
+                            hover:border-gray-300 hover:bg-gray-50 focus:border-violet-400 cursor-pointer
+                        "
+                    >
+                        <option value="viewer">Viewer</option>
+                        <option value="admin">Admin</option>
+                    </select>
+
+                    <span className="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 text-xs">
+                        ▼
+                    </span>
+                </div>
             </div>
         </div>
     );

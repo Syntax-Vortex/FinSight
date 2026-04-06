@@ -1,4 +1,6 @@
-export default function TransactionCard({ transaction }) {
+import useDataStore from "../../Stores/useDataStore";
+
+export default function TransactionCard({ transaction, isAdmin }) {
     const categoryColors = {
         Food: "#6366f1",
         Shopping: "#22c55e",
@@ -10,7 +12,11 @@ export default function TransactionCard({ transaction }) {
         Freelance: "#f97316"
     };
 
-    const isAdmin = true;
+    const {deleteTransaction} = useDataStore();
+
+    function del(){
+        deleteTransaction(transaction.id);
+    }
 
     return (
         <>
@@ -39,7 +45,7 @@ export default function TransactionCard({ transaction }) {
                 </p>
 
                 <button disabled={!isAdmin} className={`ml-auto duration-150 ${isAdmin ? "hover:text-red-800 active:text-red-950 cursor-pointer"
-                    : "opacity-50 cursor-not-allowed"}`}>
+                    : "opacity-50 cursor-not-allowed"}`} onClick={del}>
                     <svg className="size-6" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 11v6" /><path d="M14 11v6" /><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6" /><path d="M3 6h18" /><path d="M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2" /></svg>
                 </button>
             </div>
@@ -69,7 +75,7 @@ export default function TransactionCard({ transaction }) {
                     </p>
 
                     <button disabled={!isAdmin} className={`ml-auto duration-150 ${isAdmin ? "hover:text-red-800 active:text-red-950 cursor-pointer"
-                        : "opacity-50 cursor-not-allowed"}`}>
+                        : "opacity-50 cursor-not-allowed"}`} onClick={del}>
                         <svg className="size-6" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 11v6" /><path d="M14 11v6" /><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6" /><path d="M3 6h18" /><path d="M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2" /></svg>
                     </button>
                 </div>

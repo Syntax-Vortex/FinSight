@@ -8,12 +8,13 @@ import InsightsBody from "./Components/Insights/InsightsBody";
 export default function App() {
 
     const [ activePanel, setActivePanel ] = useState(0);
+    const [ isAdmin, setIsAdmin ] = useState(false);
 
   return (
-    <PageLayout>
-        <Sidebar activePanel={activePanel} setActivePanel={setActivePanel}/>  
+    <PageLayout setIsAdmin={setIsAdmin} isAdmin={isAdmin}>
+        <Sidebar activePanel={activePanel} setActivePanel={setActivePanel} setIsAdmin={setIsAdmin} isAdmin={isAdmin}/>  
         {activePanel == 0 && <DashBody setActivePanel={setActivePanel}/>}
-        {activePanel == 1 && <TransactionsBody /> }
+        {activePanel == 1 && <TransactionsBody isAdmin={isAdmin}/> }
         {activePanel == 2 && <InsightsBody /> }
         
     </PageLayout>

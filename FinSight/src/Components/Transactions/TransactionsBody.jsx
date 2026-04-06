@@ -2,8 +2,9 @@ import { useEffect, useState } from "react";
 import Dropdown from "./Dropdown";
 import TransactionCard from "./TransactionCard";
 import useDataStore from "../../Stores/useDataStore";
+import AddTransactionModal from "./AddTransactionModal";
 
-export default function TransactionsBody() {
+export default function TransactionsBody({ isAdmin }) {
     const { transactions } = useDataStore();
     const [finalTransactions, setFinalTransactions] = useState([]);
 
@@ -12,6 +13,8 @@ export default function TransactionsBody() {
 
     const [sortDropdownOpen, setSortDropdownOpen] = useState(false);
     const [selectedSort, setSelectedSort] = useState("Date");
+
+    const [addTransactionOpen, setAddTransactionOpen] = useState(false);
 
     const [searchVal, setSearchVal] = useState("");
 
@@ -58,13 +61,11 @@ export default function TransactionsBody() {
                         type="text"
                         placeholder="Search by name"
                         value={searchVal}
-                        onChange={(e) => setSearchVal(e.target.value)}
-                    />
+                        onChange={(e) => setSearchVal(e.target.value)} />
 
                     <button
                         onClick={search}
-                        className="h-full flex items-center justify-center pl-3 ml-3 border-l-2 border-gray-300 shrink-0"
-                    >
+                        className="h-full flex items-center justify-center pl-3 ml-3 border-l-2 border-gray-300 shrink-0">
                         <svg
                             className="size-5 md:size-6 text-gray-400 hover:text-gray-800 duration-150"
                             xmlns="http://www.w3.org/2000/svg"
@@ -73,8 +74,7 @@ export default function TransactionsBody() {
                             stroke="currentColor"
                             strokeWidth="2"
                             strokeLinecap="round"
-                            strokeLinejoin="round"
-                        >
+                            strokeLinejoin="round">
                             <path d="m21 21-4.34-4.34" />
                             <circle cx="11" cy="11" r="8" />
                         </svg>
@@ -107,6 +107,13 @@ export default function TransactionsBody() {
                             setSelected={setSelectedSort}
                         />
                     </div>
+
+                    <AddTransactionModal open={addTransactionOpen} setOpen={setAddTransactionOpen} />
+
+                    <button disabled={!isAdmin} onClick={() => setAddTransactionOpen(true)}
+                        className={`px-5 py-2 rounded-md text-white duration-150
+                            ${isAdmin? "bg-blue-400 hover:bg-blue-300 cursor-pointer": "bg-blue-200 cursor-not-allowed opacity-70"}`}>Add+
+                    </button>
                 </div>
             </div>
 
@@ -125,7 +132,7 @@ export default function TransactionsBody() {
                 <div className="w-full flex-1 min-h-0 overflow-y-auto overflow-x-hidden min-w-0">
                     {finalTransactions.length > 0 &&
                         finalTransactions.map((transaction) => (
-                            <TransactionCard transaction={transaction} key={transaction.id} />
+                            <TransactionCard transaction={transaction} key={transaction.id} isAdmin={isAdmin} />
                         ))}
                 </div>
             </div>

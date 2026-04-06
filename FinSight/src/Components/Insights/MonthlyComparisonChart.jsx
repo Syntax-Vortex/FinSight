@@ -25,22 +25,19 @@ export default function MonthlyComparisonChart() {
                         <CartesianGrid
                             vertical={false}
                             strokeDasharray="3 3"
-                            stroke="#e5e7eb"
-                        />
+                            stroke="#e5e7eb"/>
 
                         <XAxis
                             dataKey="month"
                             tick={{ fill: "#6b7280", fontSize: 12 }}
                             tickLine={false}
-                            axisLine={false}
-                        />
+                            axisLine={false}/>
 
                         <YAxis
                             tick={{ fill: "#6b7280", fontSize: 12 }}
                             tickLine={false}
                             axisLine={false}
-                            tickFormatter={(value) => `₹${value / 1000}k`}
-                        />
+                            tickFormatter={(value) => `₹${value / 1000}k`}/>
 
                         <Tooltip
                             cursor={{ fill: "transparent" }}
@@ -53,21 +50,18 @@ export default function MonthlyComparisonChart() {
                             formatter={(value, name) => [
                                 `₹${value.toLocaleString("en-IN")}`,
                                 name === "income" ? "Income" : "Expenses",
-                            ]}
-                        />
+                            ]}/>
 
                         <Bar
                             dataKey="income"
                             fill="#a78bfa"
                             radius={[6, 6, 0, 0]}
-                            maxBarSize={46}
-                        />
+                            maxBarSize={46}/>
                         <Bar
                             dataKey="expenses"
                             fill="#f9a8d4"
                             radius={[6, 6, 0, 0]}
-                            maxBarSize={46}
-                        />
+                            maxBarSize={46}/>
                     </BarChart>
                 </ResponsiveContainer>
             </div>
