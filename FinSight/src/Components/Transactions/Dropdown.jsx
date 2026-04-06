@@ -16,7 +16,7 @@ export default function Dropdown(props) {
     }, [setOpen]);
 
     return (
-        <div ref={ref} className="relative w-40">
+        <div ref={ref} className="relative w-18 md:w-40 text-[12px] md:text-lg">
             <button
                 onClick={() => setOpen(!open)}
                 className="w-full bg-white border-2 border-gray-200 duration-200 p-2 rounded-lg hover:bg-gray-100 hover:border-gray-300 

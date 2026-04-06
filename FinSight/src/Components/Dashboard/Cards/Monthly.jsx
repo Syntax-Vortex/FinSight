@@ -2,7 +2,7 @@ export default function Monthly(props) {
     const {title, value, percent} = props;
 
     return (
-        <div className="flex-1 max-w-50 md:flex-nowrap p-3 lg:pb-8 border-2 border-gray-200 rounded-xl bg-white lg:py-4 lg:px-6 flex flex-col gap-4 justify-start items-start
+        <div className="flex-1 md:flex-nowrap p-3 lg:pb-8 border-2 border-gray-200 rounded-xl bg-white lg:py-4 lg:px-6 flex flex-col gap-4 justify-start items-start
                         hover:scale-[1.01] hover:shadow-lg duration-150">
             <p className="font-semibold text-md text-gray-400 text-nowrap">{title}</p>
 

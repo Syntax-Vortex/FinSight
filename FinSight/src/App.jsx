@@ -11,7 +11,7 @@ export default function App() {
 
   return (
     <PageLayout>
-        {/* <Sidebar activePanel={activePanel} setActivePanel={setActivePanel}/>   */}
+        <Sidebar activePanel={activePanel} setActivePanel={setActivePanel}/>  
         {activePanel == 0 && <DashBody setActivePanel={setActivePanel}/>}
         {activePanel == 1 && <TransactionsBody /> }
         {activePanel == 2 && <InsightsBody /> }
